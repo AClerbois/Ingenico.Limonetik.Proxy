@@ -30,5 +30,20 @@
         public MerchantUrls MerchantUrls { get; set; }
 
         public MerchantOrder MerchantOrder { get; set; }
+
+        /// <summary>
+        /// If AddElements=OperationsSummary is added to the request URL, the PaymentOrder section of the response will include an OperationsSummary sub-section that contains information on the amounts associated with all operations conducted and any possible future operations:
+        /// </summary>
+        public OperationSummary OperationsSummary { get; set; }
+
+        /// <summary>
+        /// If AddElements=PaymentMethods is added to the request URL, the PaymentOrder section of the response will include a PaymentMethods sub-section that contains details of the payment methods used:
+        /// </summary>
+        public PaymentMethod[] PaymentMethods { get; set; }
+
+        /// <summary>
+        /// If AddElements=ScheduledOperations is added to the request URL, the ScheduledOperations section of the response will include a ScheduledOperation sub-section that contains details of the scheduled operations initially requested:
+        /// </summary>
+        public ScheduledOperation[] ScheduledOperations { get; set; }
     }
 }

@@ -37,7 +37,11 @@ namespace Ingenico.Limonetik.Proxy.Services
 
         public async Task<Contracts.Detail.Response> DetailAsync(Contracts.Detail.Request request)
         {
-            return await GetRequest<Contracts.Detail.Response>(string.Format(DETAIL_URL, request.Id, request.AddElements));
+            string addElements = request.AddElements.HasValue 
+                ? ((Contracts.Detail.DetailElement)request.AddElements).ToString().Replace(" ","")
+                : string.Empty;
+
+            return await GetRequest<Contracts.Detail.Response>(string.Format(DETAIL_URL, request.Id, addElements));
         }
 
         public async Task<Contracts.Charge.Response> ChargeAsync(Contracts.Charge.Request request)

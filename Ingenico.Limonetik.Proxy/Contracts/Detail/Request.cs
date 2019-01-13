@@ -10,6 +10,6 @@
         /// <summary>
         /// Identifiers for any additional fields required.
         /// </summary>
-        public string AddElements { get; set; }
+        public DetailElement? AddElements { get; set; }
     }
 }
