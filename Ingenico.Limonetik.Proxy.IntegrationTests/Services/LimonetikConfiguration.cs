@@ -4,12 +4,12 @@
     {
         public bool IsProduction { get; set; } = false;
 
-        public string ApiProductionLogin => "norauto-pt";
+        public string ApiProductionLogin => "";
 
-        public string ApiProductionKey => "VlpHZHlOQVhFMVlnOjcyMEMxMzgxRDUzMEQzNUU4QUVFOTk4NTRBMkE5MUZG";
+        public string ApiProductionKey => "";
 
-        public string ApiTestLogin => "ogone-fr";
+        public string ApiTestLogin => "";
 
-        public string ApiTestKey => "dmZZTDRnYmpRdVprOkNERUQ3RjY1QTMxMDNDRUFFMzQ0RUMyQTI1NUYxREMy";
+        public string ApiTestKey => "";
     }
 }
