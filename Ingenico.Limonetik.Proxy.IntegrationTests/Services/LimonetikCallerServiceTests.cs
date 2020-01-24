@@ -42,7 +42,11 @@ namespace Ingenico.Limonetik.Proxy.IntegrationTests.Services
                         Customer = new Customer
                         {
                             Email = "adrien.clerbois@outlook.com"
-                        }
+                        },
+                        TotalAmount = 15,
+                        Id = "12365",
+                        Currency = "EUR"                        
+
                     }
                 }
             };
@@ -53,6 +57,20 @@ namespace Ingenico.Limonetik.Proxy.IntegrationTests.Services
                 output.WriteLine(response.ReturnMessage);
             }
             Assert.Equal(1000, response.ReturnCode);
+        }
+
+        [Fact]
+        public async Task GetPaymentDataTransaction()
+        {
+            var httpClient = new HttpClient();
+            var client = new Proxy.Services.LimonetikCallerService(
+                httpClient, new LimonetikConfiguration());
+            var detailsRequest = new Contracts.Detail.Request {
+                Id = "274060854832",
+                AddElements = Contracts.Detail.DetailElement.OperationsSummary | Contracts.Detail.DetailElement.MerchantOrder | Contracts.Detail.DetailElement.MerchantUrls | Contracts.Detail.DetailElement.PaymentMethods | Contracts.Detail.DetailElement.PaymentMethods
+            };
+            var result = await client.DetailAsync(detailsRequest);
+
         }
     }
 }

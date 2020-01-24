@@ -26,7 +26,6 @@ namespace Ingenico.Limonetik.Proxy.Services
             client.DefaultRequestHeaders.Add("Accept", "application/json");
             var byteArray = Encoding.ASCII.GetBytes($"{runtimeConfiguration.Login}{runtimeConfiguration.Key}");
             client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Basic", Convert.ToBase64String(byteArray));
-
             Client = client;
         }
 
@@ -37,8 +36,8 @@ namespace Ingenico.Limonetik.Proxy.Services
 
         public async Task<Contracts.Detail.Response> DetailAsync(Contracts.Detail.Request request)
         {
-            string addElements = request.AddElements.HasValue 
-                ? ((Contracts.Detail.DetailElement)request.AddElements).ToString().Replace(" ","")
+            string addElements = request.AddElements.HasValue
+                ? ((Contracts.Detail.DetailElement)request.AddElements).ToString().Replace(" ", "")
                 : string.Empty;
 
             return await GetRequest<Contracts.Detail.Response>(string.Format(DETAIL_URL, request.Id, addElements));
@@ -81,7 +80,8 @@ namespace Ingenico.Limonetik.Proxy.Services
         {
             return JsonConvert.SerializeObject(objectToSerialize, Formatting.None, new JsonSerializerSettings
             {
-                NullValueHandling = NullValueHandling.Ignore
+                NullValueHandling = NullValueHandling.Ignore,
+                DefaultValueHandling = DefaultValueHandling.Ignore
             });
         }
 

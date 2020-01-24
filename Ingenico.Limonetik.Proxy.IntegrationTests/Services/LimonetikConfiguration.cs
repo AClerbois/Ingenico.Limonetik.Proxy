@@ -2,11 +2,11 @@
 {
     public class LimonetikConfiguration : Configuration.ILimonetikConfiguration
     {
-        public bool IsProduction => false;
+        public bool IsProduction { get; set; } = false;
 
-        public string ApiProductionLogin => throw new System.NotImplementedException();
+        public string ApiProductionLogin => "norauto-pt";
 
-        public string ApiProductionKey => throw new System.NotImplementedException();
+        public string ApiProductionKey => "VlpHZHlOQVhFMVlnOjcyMEMxMzgxRDUzMEQzNUU4QUVFOTk4NTRBMkE5MUZG";
 
         public string ApiTestLogin => "ogone-fr";
 
